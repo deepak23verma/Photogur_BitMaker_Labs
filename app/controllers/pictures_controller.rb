@@ -9,6 +9,7 @@ class PicturesController < ApplicationController
   end
 
   def new
+    @picture = Picture.new
   end
 
   def create
@@ -21,6 +22,10 @@ class PicturesController < ApplicationController
       # otherwise render the view associated with the action :new (i.e. new.html.erb)
       render :new
     end
+  end
+
+  def picture_params
+    params.require(:picture).permit(:artist, :title, :url)
   end
 
 end
